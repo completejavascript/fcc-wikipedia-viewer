@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let _header = $("header");
   let _resultWrapper = $(".result");
   let _loading = $(".loading");
+  let _title = $("header");
   
   let api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&' + 
             'generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&' +
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let searchText = _input.value;
     if (searchText !== '') search(searchText);
   });
+
+  _title.addEventListener("click", () => location.reload());
 
   _input.addEventListener("search", event => {
     let _target = event.target;
