@@ -15,12 +15,20 @@
 <body>
   <div class="main-app">
     <header class="my-transition">
-      <h1 class="my-transition"><a href="#" class="effect-underline"><span class="text-deco">Wiki</span>pedia Viewer</a></h1>
-      <input class="my-transition" type="search" placeholder="Search..." autofocus>
+      <h1 class="my-transition">
+        <a href="#" class="effect-underline"><span class="text-deco">Wiki</span>pedia Viewer</a>
+      </h1>
+      <input class="my-transition" id="inp-search"type="search" placeholder="Search..." autofocus>
     </header>
     <section class="row">
-      <div class="btn-wrapper"><button class="my-transition">Wikipedia Search</button></div>
-      <div class="btn-wrapper"><button class="my-transition">Random Wikipedia</button></div>
+      <div class="btn-wrapper">
+        <button class="my-transition" id="wiki-search">Wikipedia Search</button>
+      </div>
+      <div class="btn-wrapper">
+        <button class="my-transition link">
+          <a href="https://en.wikipedia.org/wiki/Special:Random">Random Wikipedia</a>
+        </button>
+      </div>
     </section>
     <footer class="row">Made with
       <i class="fa fa-heart heart"></i> by

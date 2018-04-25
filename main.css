@@ -2,7 +2,7 @@
 body {
   margin: 0;
   color: #fff;
-  font: normal normal normal 1rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
+  font: normal normal normal 0.9rem/1.6 Nunito Sans, Helvetica, Arial, sans-serif;
 }
 h1 { 
   font-size: 2.25rem;
@@ -48,12 +48,12 @@ h1 a.effect-underline:after {
 .main-app input[type="search"] {
   background-color: transparent;
   border: solid 2px #fff;
-  width: 290px;
+  width: 300px;
   height: 40px;
   border-radius: 20px;
   padding: 0px 10px;
   color: #fff;
-  font-size: 1.15rem;
+  font-size: 1rem;
 }
 .main-app input[type="search"]:focus { outline: none;}
 .main-app input[type="search"]::-webkit-input-placeholder {
@@ -91,12 +91,15 @@ button {
   color: #fff;
   padding: 8px 10px;
   border-radius: 6px;
+  font-size: 0.9rem;
 }
 button:focus {outline: none;}
 button:hover {
   cursor: pointer;
   transform: translate(0, -2px);
 }
+button.link {padding: 0;}
+button.link a {padding: 8px 10px;}
 @media (min-width: 400px) {
   h1 {font-size: 2.5rem;}
   header{padding-top: 135px;}
@@ -108,7 +111,7 @@ button:hover {
   .main-app input[type="search"]{width: 450px;}
 }
 @media (min-width: 768px) {
-  h1 {font-size: 3.25rem;}
+  h1 {font-size: 3.5rem;}
   header{padding-top: 170px;}
   .main-app input[type="search"]{width: 550px;}
 }
