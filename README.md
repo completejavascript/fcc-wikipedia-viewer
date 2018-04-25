@@ -4,7 +4,7 @@ A freeCodeCamp project - Build a Wikipedia Viewer
 
 # Preview
 
-  * [[FCC] Tribute page: Brendan Eich](http://about.phamvanlam.com/fcc-wikipedia-viewer/)
+  * [[FCC] Build a Wikipedia Viewer](http://about.phamvanlam.com/fcc-wikipedia-viewer/)
 
 # Visit me
 
