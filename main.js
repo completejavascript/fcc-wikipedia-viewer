@@ -18,7 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchText !== '') search(searchText);
   });
 
-  _title.addEventListener("click", () => location.reload());
+  _title.addEventListener("click", () => {
+    console.log("click");
+    location.reload();
+  });
 
   _input.addEventListener("search", event => {
     let _target = event.target;
