@@ -6,16 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let _resultWrapper = $(".result");
   let _loading = $(".loading");
   let _title = $("header");
-  
-  let api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&' + 
-            'generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&' +
-            'pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
-  let cors = 'https://cors-anywhere.herokuapp.com/';
-  let wikiPage = 'https://en.wikipedia.org/?curid=';  
+
+  let api = "https://simple-wikipedia-server.glitch.me/?search=";
+  let wikiPage = "https://en.wikipedia.org/?curid=";
 
   $("#wiki-search").addEventListener("click", () => {
     let searchText = _input.value;
-    if (searchText !== '') search(searchText);
+    if (searchText !== "") search(searchText);
   });
 
   _title.addEventListener("click", () => {
@@ -23,17 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     location.reload();
   });
 
-  _input.addEventListener("search", event => {
+  _input.addEventListener("search", (event) => {
     let _target = event.target;
     let searchText = _target.value;
-    if (searchText !== '') search(searchText);
+    if (searchText !== "") search(searchText);
     else resetViewResult();
   });
 
-  _input.addEventListener("input", event => {
+  _input.addEventListener("input", (event) => {
     let _target = event.target;
     let searchText = _target.value;
-    if (searchText === '') resetViewResult();
+    if (searchText === "") resetViewResult();
   });
 
   function showLoading(show) {
@@ -44,10 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function search(text) {
     showLoading(true);
 
-    fetch(cors + api + text)
-    .then(response => response.json())
-    .then(json => viewResult(json))
-    .catch(error => onSearchError());
+    fetch(api + text)
+      .then((response) => response.json())
+      .then((json) => viewResult(json))
+      .catch((error) => onSearchError(error));
   }
 
   function onSearchError(error) {
@@ -57,14 +54,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function viewResult(result) {
     showLoading(false);
+
+    let { code, data, message } = result;
+    if (code !== 200) {
+      console.log(message);
+      return;
+    }
+
     resetViewResult();
 
-    if (result.query) {
+    if (data.query) {
       _searchWrapper.classList.add("view-result");
       _header.classList.add("view-result");
 
-      let pages = result.query.pages;
-      
+      let pages = data.query.pages;
+
       for (let key in pages) {
         let page = pages[key];
         let html = itemHTMLTemplate(page.title, page.extract, page.pageid);
@@ -75,10 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function onResultItemClicked(event) {
+  function onResultItemClicked() {
     let _resultItem = this;
     let linkTarget = _resultItem.getAttribute("target");
-    window.open(linkTarget, '_blank');
+    window.open(linkTarget, "_blank");
   }
 
   function resetViewResult() {
@@ -96,16 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function itemHTMLTemplate(title, description, pageid) {
     let linkTarget = `${wikiPage}${pageid}`;
 
-    return `<div class="result-item my-transition" target="${linkTarget}">\n` + 
-              `<div class="content">\n` + 
-                `<h2><a href="${linkTarget}" target="_blank">${title}</a></h2>\n` + 
-                `<p>${description}</p>\n` + 
-              `</div>\n` + 
-            `</div>\n`;
-  } 
+    return (
+      `<div class="result-item my-transition" target="${linkTarget}">\n` +
+      `<div class="content">\n` +
+      `<h2><a href="${linkTarget}" target="_blank">${title}</a></h2>\n` +
+      `<p>${description}</p>\n` +
+      `</div>\n` +
+      `</div>\n`
+    );
+  }
 
   function htmlToElement(html) {
-    let template = document.createElement('template');
+    let template = document.createElement("template");
     html = html.trim(); // Never return a text node of whitespace as the result
     template.innerHTML = html;
     return template.content.firstChild;
