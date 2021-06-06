@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let _loading = $(".loading");
   let _title = $("header");
 
-  let api = "https://simple-wikipedia-server.glitch.me/?search=";
+  let api =
+    "https://api-completejavascript.vercel.app/api/v1/wikipedia?search=";
   let wikiPage = "https://en.wikipedia.org/?curid=";
 
   $("#wiki-search").addEventListener("click", () => {
@@ -55,9 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function viewResult(result) {
     showLoading(false);
 
-    let { code, data, message } = result;
-    if (code !== 200) {
-      console.log(message);
+    let { error, data } = result;
+    if (error) {
+      console.log("Search on Wikipedia error:", error);
       return;
     }
 
