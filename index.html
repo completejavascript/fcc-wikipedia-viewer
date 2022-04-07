@@ -1,51 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Build a Wikipedia Viewer - Lam Pham</title>
+    <link rel="stylesheet" href="./main.css" />
 
-  <title>Build a Wikipedia Viewer - Lam Pham</title>
-  <link rel="stylesheet" href="./main.css">
-</head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-96543695-6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "UA-96543695-6");
+    </script>
+  </head>
 
-<body>
-  <div class="main-app">
-    <header class="my-transition">
-      <h1 class="my-transition">
-        <a href="javascript:void(0);" class="effect-underline"><span class="text-deco">Wiki</span>pedia Viewer</a>
-      </h1>
-    </header>
+  <body>
+    <div class="main-app">
+      <header class="my-transition">
+        <h1 class="my-transition">
+          <a href="javascript:void(0);" class="effect-underline"
+            ><span class="text-deco">Wiki</span>pedia Viewer</a
+          >
+        </h1>
+      </header>
 
-    <section class="my-transition search-wrapper">
-      <input class="my-transition" id="inp-search" type="search" placeholder="Search..." autofocus>
-      <div class="row">
-        <div class="btn-wrapper">
-          <button class="my-transition" id="wiki-search">Search</button>
+      <section class="my-transition search-wrapper">
+        <input
+          class="my-transition"
+          id="inp-search"
+          type="search"
+          placeholder="Search..."
+          autofocus
+        />
+        <div class="row">
+          <div class="btn-wrapper">
+            <button class="my-transition" id="wiki-search">Search</button>
+          </div>
+          <div class="btn-wrapper">
+            <button class="my-transition link">
+              <a
+                href="https://en.wikipedia.org/wiki/Special:Random"
+                target="_blank"
+                >Random</a
+              >
+            </button>
+          </div>
         </div>
-        <div class="btn-wrapper">
-          <button class="my-transition link">
-            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random</a>
-          </button>
-        </div>
+      </section>
+
+      <section class="result"></section>
+
+      <footer class="row">
+        Made with <i class="fa fa-heart heart"></i> by
+        <a class="effect-underline" href="http://about.phamvanlam.com"
+          ><span class="text-deco">Lam Pham</span></a
+        >
+      </footer>
+
+      <div class="loading">
+        <div class="lds-hourglass"></div>
       </div>
-    </section>
-
-    <section class="result">
-    </section>
-
-    <footer class="row">Made with
-      <i class="fa fa-heart heart"></i> by
-      <a class="effect-underline" href="http://about.phamvanlam.com"><span class="text-deco">Lam Pham</span></a>
-    </footer>
-
-    <div class="loading">
-      <div class="lds-hourglass"></div>
     </div>
-  </div>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="./main.js"></script>
-</body>
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="./main.js"></script>
+  </body>
 </html>
